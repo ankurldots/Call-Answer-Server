@@ -1,0 +1,25 @@
+[Unit]
+Description=Call-Answer Exotel WebSocket server
+After=network.target
+
+[Service]
+Type=simple
+User=callanswer
+Group=callanswer
+WorkingDirectory=/opt/call-answer-server/current
+EnvironmentFile=/etc/call-answer-server.env
+ExecStart=/usr/bin/node dist/index.js
+Restart=always
+RestartSec=2
+# Active calls may finish after SIGTERM (SHUTDOWN_GRACE_SECONDS, default 120).
+TimeoutStopSec=150
+KillSignal=SIGTERM
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/var/lib/call-answer-server
+LimitNOFILE=65535
+
+[Install]
+WantedBy=multi-user.target
