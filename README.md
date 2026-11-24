@@ -56,7 +56,7 @@ ssh <user>@<host> 'sudo nano /etc/call-answer-server.env'   # contents from .env
 Install Caddy (see caddyserver.com/docs/install), then `/etc/caddy/Caddyfile`:
 
 ```
-agent.example.com {
+agent.leadingdot.com {
     reverse_proxy 127.0.0.1:8080
 }
 ```
